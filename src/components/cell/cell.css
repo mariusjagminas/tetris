@@ -1,0 +1,16 @@
+.cell {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid grey;
+}
+
+.active {
+  background: blue;
+  border: 1px solid blue;
+  
+}
+.freeze {
+  background: green;
+  border: 1px solid green;
+}
+
