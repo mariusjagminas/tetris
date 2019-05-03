@@ -1,10 +1,10 @@
 import React from "react";
 import "./modal.css";
 
-const Modal = ({showModal,startGame}) => {
+const Modal = ({gameOver,startGame}) => {
  
   return (
-    <div className={`modal ${showModal ? 'is-visible':''}`}>
+    <div className={`modal ${gameOver ? 'is-visible':''}`}>
       <p className="modal__text">Game Over</p>
       <button className="modal__button" onClick={startGame}>Restart Game</button>
     </div>

@@ -8,11 +8,27 @@ class Field extends React.Component {
     super();
     this.state = {
       field: [[]],
-      showModal: false,
+      gameOver: false
     };
-    this.speed = 200;
+
+    this.speed = 800;
     this.field = this.createField(14, 8);
-    this.figure = [[1, 1], [1, 1]];
+    this.nextFigure = [];
+    this.pathIndex = 0;
+    this.isKeyDown = true;
+    this.figureCoord = { x: 0, y: 0 };
+    this.figures = [
+      {
+        // figure: L-reverse
+        path: [
+          [[0, 0], [1, 0], [2, 0], [2, 1]],
+          [[1, 0], [1, 1], [1, 2], [0, 2]],
+          [[0, 0], [0, 1], [1, 1], [2, 1]],
+          [[0, 0], [1, 0], [0, 1], [0, 2]]
+        ]
+      }
+    ];
+    this.figure = this.figures[0].path[this.pathIndex];
   }
 
   createField = (height, width) => {
@@ -28,11 +44,15 @@ class Field extends React.Component {
 
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyDown);
+    document.addEventListener("keyup",()=> this.isKeyDown = true)
     this.loop();
   }
 
   loop = () => {
-    if (!(this.field[0][0] === 0)){this.gameOver();return} 
+    if ((this.field[0].includes(2))) {
+      this.gameOver();
+      return;
+    }
     this.clearFullRow();
     this.initFigure();
     this.setState({ field: this.field });
@@ -40,6 +60,7 @@ class Field extends React.Component {
   };
 
   handleKeyDown = e => {
+    if(!this.isKeyDown ||this.state.gameOver ) return
     switch (e.keyCode) {
       case 37:
         this.moveFigureLeft();
@@ -59,9 +80,11 @@ class Field extends React.Component {
   };
 
   initFigure = () => {
-    this.figure.forEach((row, rowIndex) =>
-      row.forEach((cell, cellIndex) => (this.field[rowIndex][cellIndex] = cell))
-    );
+    this.figure.forEach(path => {
+      this.field[path[1] + this.figureCoord.y][
+        path[0] + this.figureCoord.x
+      ] = 1;
+    });
   };
 
   moveFigure = () => {
@@ -79,6 +102,7 @@ class Field extends React.Component {
     }
     // move a figure down
     if (canMove) {
+      this.figureCoord.y++;
       for (let y = this.field.length - 1; y >= 0; y--) {
         for (let x = 0; x <= this.field[y].length - 1; x++) {
           if (this.field[y][x] === 1) {
@@ -92,6 +116,7 @@ class Field extends React.Component {
   };
 
   moveFigureLeft = () => {
+    this.isKeyDown = false;
     // check if figure can move to left
     let canMove = true;
     for (let x = 0; x <= this.field[1].length - 1; x++) {
@@ -105,6 +130,7 @@ class Field extends React.Component {
     }
     // move figure to left
     if (canMove) {
+      this.figureCoord.x--;
       for (let x = 0; x <= this.field[1].length - 1; x++) {
         for (let y = 0; y <= this.field.length - 1; y++) {
           if (this.field[y][x] === 1) {
@@ -118,6 +144,7 @@ class Field extends React.Component {
   };
 
   moveFigureRight = () => {
+    this.isKeyDown = false;
     let canMove = true;
     for (let x = this.field[1].length - 1; x >= 0; x--) {
       for (let y = 0; y <= this.field.length - 1; y++) {
@@ -130,6 +157,7 @@ class Field extends React.Component {
     }
     // move figure to right
     if (canMove) {
+      this.figureCoord.x++;
       for (let x = this.field[1].length - 1; x >= 0; x--) {
         for (let y = 0; y <= this.field.length - 1; y++) {
           if (this.field[y][x] === 1) {
@@ -143,12 +171,39 @@ class Field extends React.Component {
   };
 
   moveFigureDown = () => {
+    this.isKeyDown = false;
     clearInterval(this.interval);
     this.interval = setInterval(this.moveFigure, 10);
   };
 
   rotateFigure() {
-    console.log("rotate");
+    this.isKeyDown = false;
+    // check if figure has space to rotate
+    let canRotate = true;
+    this.nextFigure = this.figures[0].path[this.pathIndex + 1];
+    this.nextFigure.forEach(path => {
+      const x = path[0] + this.figureCoord.x;
+      const y = path[1] + this.figureCoord.y;
+      if (x >= this.field[0].length || y>=this.field.length|| this.field[y][x]===2) {
+        canRotate = false;
+      }
+    });
+
+   
+    if (canRotate) {
+      this.pathIndex = this.pathIndex >= 2 ? -1 : this.pathIndex + 1;
+      this.figure = this.nextFigure;
+      // flush cells
+      this.field.forEach((row, rowIndex) =>
+        row.forEach((cell, cellIndex) => {
+          if (cell === 1) {
+            this.field[rowIndex][cellIndex] = 0;
+          }
+        })
+      );
+      this.initFigure();
+      this.setState({ field: this.field });
+    }
   }
 
   freezeFigure = () => {
@@ -160,6 +215,8 @@ class Field extends React.Component {
         }
       }
     }
+    this.figureCoord.x = 0;
+    this.figureCoord.y = 0;
     this.setState({ field: this.field });
     this.loop();
   };
@@ -191,27 +248,26 @@ class Field extends React.Component {
     return false;
   };
 
-  gameOver =()=>{
-    this.setState({showModal: true});
-  }
-  
-  startGame =()=> {
+  gameOver = () => {
+    this.setState({ gameOver: true });
     clearInterval(this.interval);
-    this.setState({showModal: false});
-    this.field = this.createField(14,8);
+  };
+
+  startGame = () => {
+    this.setState({ gameOver: false });
+    this.field = this.field.map(row=>row.map(cell=> cell = 0));
     this.loop();
-  }
+  };
 
   render() {
-    console.log('render');
     return (
       <React.Fragment>
-      <div className="field">
-        {this.state.field.map((row, index) => (
-          <Row className="row" key={index} row={row} />
-        ))}
-      </div>
-      <Modal showModal={this.state.showModal} startGame={this.startGame}/>
+        <div className="field">
+          {this.state.field.map((row, index) => (
+            <Row className="row" key={index} row={row} />
+          ))}
+        </div>
+        <Modal gameOver={this.state.gameOver} startGame={this.startGame} />
       </React.Fragment>
     );
   }
