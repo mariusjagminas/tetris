@@ -13,11 +13,27 @@ class Field extends React.Component {
 
     this.speed = 800;
     this.field = this.createField(14, 8);
-    this.nextFigure = [];
     this.pathIndex = 0;
     this.isKeyDown = true;
     this.figureCoord = { x: 0, y: 0 };
+    this.lastRandomNumber = null;
+    this.currentFigure = null;
+    this.figurePath = null;
     this.figures = [
+      {
+        // figure: shape-left
+        path: [
+          [[0, 0], [0, 1], [1, 1], [1, 2]],
+          [[1, 0], [2, 0], [0, 1], [1, 1]]
+        ]
+      },
+      {
+        // figure: shape-right
+        path: [
+          [[1, 0], [0, 1], [1, 1], [0, 2]],
+          [[0, 0], [1, 0], [1, 1], [2, 1]]
+        ]
+      },
       {
         // figure: L-reverse
         path: [
@@ -26,9 +42,33 @@ class Field extends React.Component {
           [[0, 0], [0, 1], [1, 1], [2, 1]],
           [[0, 0], [1, 0], [0, 1], [0, 2]]
         ]
+      },
+      {
+        // figure: L-normal
+        path: [
+          [[0, 0], [1, 0], [2, 0], [0, 1]],
+          [[0, 0], [1, 0], [1, 1], [1, 2]],
+          [[2, 0], [0, 1], [1, 1], [2, 1]],
+          [[0, 0], [0, 1], [0, 2], [1, 2]]
+        ]
+      },
+      {
+        // figure: line
+        path: [
+          [[0, 0], [1, 0], [2, 0], [3, 0]],
+          [[1, 0], [1, 1], [1, 2], [1, 3]]
+        ]
+      },
+      {
+        // figure: T
+        path: [
+          [[0, 0], [1, 0], [2, 0], [1, 1]],
+          [[1, 0], [1, 1], [1, 2], [0, 1]],
+          [[1, 0], [0, 1], [1, 1], [2, 1]],
+          [[0, 0], [0, 1], [0, 2], [1, 1]]
+        ]
       }
     ];
-    this.figure = this.figures[0].path[this.pathIndex];
   }
 
   createField = (height, width) => {
@@ -42,25 +82,34 @@ class Field extends React.Component {
     return array;
   };
 
+  getRandomFigure = () => {
+    const randomNumber = Math.floor(Math.random() * this.figures.length);
+    if (this.lastRandomNumber === randomNumber) this.getRandomFigure();
+    this.lastRandomNumber = randomNumber;
+    return this.figures[randomNumber];
+  };
+
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyDown);
-    document.addEventListener("keyup",()=> this.isKeyDown = true)
+    document.addEventListener("keyup", () => (this.isKeyDown = true));
     this.loop();
   }
 
   loop = () => {
-    if ((this.field[0].includes(2))) {
+    if (this.field[0].includes(2)) {
       this.gameOver();
       return;
     }
-    this.clearFullRow();
-    this.initFigure();
+    this.pathIndex = 0;
+    this.currentFigure = this.getRandomFigure();
+    this.figurePath = this.currentFigure.path[0];
+    this.drawFigure();
     this.setState({ field: this.field });
     this.interval = setInterval(this.moveFigure, this.speed);
   };
 
   handleKeyDown = e => {
-    if(!this.isKeyDown ||this.state.gameOver ) return
+    if (!this.isKeyDown || this.state.gameOver) return;
     switch (e.keyCode) {
       case 37:
         this.moveFigureLeft();
@@ -79,8 +128,8 @@ class Field extends React.Component {
     }
   };
 
-  initFigure = () => {
-    this.figure.forEach(path => {
+  drawFigure = () => {
+    this.figurePath.forEach(path => {
       this.field[path[1] + this.figureCoord.y][
         path[0] + this.figureCoord.x
       ] = 1;
@@ -180,19 +229,25 @@ class Field extends React.Component {
     this.isKeyDown = false;
     // check if figure has space to rotate
     let canRotate = true;
-    this.nextFigure = this.figures[0].path[this.pathIndex + 1];
-    this.nextFigure.forEach(path => {
+    this.nextFigurePath = this.currentFigure.path[this.pathIndex + 1];
+    this.nextFigurePath.forEach(path => {
       const x = path[0] + this.figureCoord.x;
       const y = path[1] + this.figureCoord.y;
-      if (x >= this.field[0].length || y>=this.field.length|| this.field[y][x]===2) {
+      if (
+        x >= this.field[0].length ||
+        y >= this.field.length ||
+        this.field[y][x] === 2
+      ) {
         canRotate = false;
       }
     });
 
-   
     if (canRotate) {
-      this.pathIndex = this.pathIndex >= 2 ? -1 : this.pathIndex + 1;
-      this.figure = this.nextFigure;
+      this.pathIndex =
+        this.pathIndex >= this.currentFigure.path.length - 2
+          ? -1
+          : this.pathIndex + 1;
+      this.figurePath = this.nextFigurePath;
       // flush cells
       this.field.forEach((row, rowIndex) =>
         row.forEach((cell, cellIndex) => {
@@ -201,7 +256,7 @@ class Field extends React.Component {
           }
         })
       );
-      this.initFigure();
+      this.drawFigure();
       this.setState({ field: this.field });
     }
   }
@@ -218,6 +273,7 @@ class Field extends React.Component {
     this.figureCoord.x = 0;
     this.figureCoord.y = 0;
     this.setState({ field: this.field });
+    this.clearFullRow();
     this.loop();
   };
 
@@ -255,7 +311,7 @@ class Field extends React.Component {
 
   startGame = () => {
     this.setState({ gameOver: false });
-    this.field = this.field.map(row=>row.map(cell=> cell = 0));
+    this.field = this.field.map(row => row.map(cell => (cell = 0)));
     this.loop();
   };
 
