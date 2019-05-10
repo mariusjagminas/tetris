@@ -1,11 +1,11 @@
 import React from "react";
-import Field from "./components/field/field";
+import Game from "./components/game/game";
 
 const App = () => {
   return (
-    <React.Fragment>
-      <Field />
-    </React.Fragment>
+    <>
+      <Game />
+    </>
   );
 };
 
