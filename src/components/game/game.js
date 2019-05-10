@@ -15,7 +15,7 @@ class Game extends React.Component {
     };
 
     this.speed = 800;
-    this.field = this.createField(14, 8);
+    this.field = this.createField(20, 10);
     this.nextFigureField = this.createField(5, 5);
     this.pathIndex = 0;
     this.isKeyDown = true;
@@ -47,7 +47,7 @@ class Game extends React.Component {
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyDown);
     document.addEventListener("keyup", () => (this.isKeyDown = true));
-    this.nextFigure = this.getRandomFigure(); 
+    this.nextFigure = this.getRandomFigure();
     this.loop();
   }
 
