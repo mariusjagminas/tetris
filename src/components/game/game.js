@@ -302,12 +302,14 @@ class Game extends React.Component {
 
 	render() {
 		return (
+			<>
 			<div className="game">
 				<Field field={this.state.field} />
 				<Modal gameOver={this.state.gameOver} startGame={this.startGame} />
 				<NextFigureField nextFigureField={this.state.nextFigureField} />
-				<ControlPanel handleClick={this.handleClick} pauseGame={this.pauseGame} startGame={this.startGame} />
 			</div>
+				<ControlPanel handleClick={this.handleClick} pauseGame={this.pauseGame} startGame={this.startGame} />
+				</>
 		);
 	}
 }

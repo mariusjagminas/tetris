@@ -1,18 +1,15 @@
 .control-panel {
-  width: 300px;
-  height: 200px;
   /* background:#E61B21; */
-  border: 1px solid black;
-  padding: 20px;
+  display: flex;
+  align-items: flex-end;
   transition: 0.2s ease-in-out;
   font-size: 10px;
   perspective: 1000px;
 }
 
 .control-panel__arrows-wrapper {
-  border: 1px solid black;
-  width: 15em;
-  height: 15em;
+  width: 12em;
+  height: 12em;
   display: flex;
   flex-wrap: wrap;
 }

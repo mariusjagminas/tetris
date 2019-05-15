@@ -10,9 +10,8 @@ html {
 
 body {
   font-family: monospace, sans-serif;
-  padding-top: 7rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
