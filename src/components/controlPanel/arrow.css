@@ -1,13 +1,13 @@
 .arrow {
   width: 5em;
-  height: 5em;
-  background: #F1E610;
+  height: 6em;
+  background: #f1e610;
   text-align: center;
   position: relative;
 }
 
 .arrow::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -17,5 +17,13 @@
 }
 
 .arrow__content {
-  font-size: 20px;
+  width: 2em;
+  height: 2em;
+  margin: 0 auto;
+  border: 1.5em solid transparent;
+  border-bottom: 2.2em solid black;
+}
+
+.arrow--down {
+  transform: rotateZ(180deg);
 }

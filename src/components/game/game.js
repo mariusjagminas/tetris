@@ -98,7 +98,7 @@ class Game extends React.Component {
   };
 
   handleClick = e => {
-    console.log(e.target.dataset.arrow);
+    if (this.state.gameOver) return;
     if (e.target.dataset.arrow === "up") this.rotateFigure();
     if (e.target.dataset.arrow === "down") this.moveFigureDown();
   };

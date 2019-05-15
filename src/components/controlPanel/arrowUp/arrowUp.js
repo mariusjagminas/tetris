@@ -9,7 +9,7 @@ const ArrowUp = ({ handleClickButton }) => {
       className="arrow arrow--up"
     >
      <div className="arrow__content">
-     Up
+    
      </div>
     </div>
   );

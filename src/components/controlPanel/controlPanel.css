@@ -15,3 +15,6 @@
 .up {
   transform: rotateX(20deg);
 }
+.down {
+  transform: rotateX(-20deg);
+}
