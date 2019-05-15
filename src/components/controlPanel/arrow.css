@@ -27,3 +27,9 @@
 .arrow--down {
   transform: rotateZ(180deg);
 }
+.arrow--left {
+  transform: rotateZ(-90deg);
+}
+.arrow--right {
+  transform: rotateZ(90deg);
+}
