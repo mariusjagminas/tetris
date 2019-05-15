@@ -3,18 +3,26 @@ import "./controlPanel.css";
 import ArrowUp from "./arrowUp/arrowUp";
 
 class ControlPanel extends React.PureComponent {
-  constructor() {
+  constructor(props) {
     super();
+    this.handleClick = props.handleClick;
   }
 
-  // handleClick(e) {
-  //   console.log(e.target.dataset.arrow);
-  // }
+  handleClickButton = e => {
+    const controlPanel = document.querySelector(".control-panel");
+    const activeClass = e.target.dataset.arrow;
+    controlPanel.classList.add(activeClass);
+    setTimeout(() => {
+      controlPanel.classList.remove(activeClass);
+    }, 1000);
+    this.handleClick(e);
+  };
+
   render() {
-     console.log('render ControlPanel')
+    console.log("render ControlPanel");
     return (
       <div className="control-panel">
-        <ArrowUp handleClick={this.props.handleClick} />
+        <ArrowUp handleClickButton={this.handleClickButton} />
       </div>
     );
   }
