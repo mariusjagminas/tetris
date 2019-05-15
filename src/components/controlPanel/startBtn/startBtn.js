@@ -1,7 +1,8 @@
 import React from 'react';
 
-const StartButton = () => {
-	return <button classList="btn btn--start" />;
+const StartButton = ({startGame}) => {
+  return <button className="btn btn--start" onClick={startGame} > Start</button>
+  ;
 };
 
 export default StartButton

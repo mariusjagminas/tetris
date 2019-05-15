@@ -5,12 +5,14 @@ import ArrowDown from './arrowDown/arrowDown';
 import ArrowLeft from './arrowLeft/arrowLeft';
 import ArrowRight from './arrowRight/arrowRight';
 import PauseBtn from './pauseBtn/pauseBtn';
+import StartBtn from './startBtn/startBtn';
 
 class ControlPanel extends React.PureComponent {
 	constructor(props) {
 		super();
 		this.handleClick = props.handleClick;
 		this.pauseGame = props.pauseGame;
+		this.startGame = props.startGame;
 	}
 
 	handleClickButton = e => {
@@ -33,6 +35,7 @@ class ControlPanel extends React.PureComponent {
 					<ArrowRight handleClickButton={this.handleClickButton} />
 				</div>
 					<PauseBtn pauseGame={this.pauseGame}/>
+					<StartBtn startGame={this.startGame}/>
 			</div>
 		);
 	}

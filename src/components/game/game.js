@@ -282,12 +282,15 @@ class Game extends React.Component {
 	};
 
 	startGame = () => {
+		if(!this.state.gameOver) return;
 		this.setState({ gameOver: false });
 		this.field = this.field.map(row => row.map(cell => (cell = 0)));
 		this.loop();
 	};
 
 	pauseGame = () => {
+		if(this.state.gameOver) return;
+		console.log('PAUSE')
 		if (this.paused) {
 			this.interval = setInterval(this.moveFigure, this.speed);
 			this.paused = false;
@@ -303,7 +306,7 @@ class Game extends React.Component {
 				<Field field={this.state.field} />
 				<Modal gameOver={this.state.gameOver} startGame={this.startGame} />
 				<NextFigureField nextFigureField={this.state.nextFigureField} />
-				<ControlPanel handleClick={this.handleClick} pauseGame={this.pauseGame} />
+				<ControlPanel handleClick={this.handleClick} pauseGame={this.pauseGame} startGame={this.startGame} />
 			</div>
 		);
 	}
