@@ -4,6 +4,7 @@ import Modal from "../modal/modal";
 import NextFigureField from "../nextFigureField/nextFigureField";
 import "./game.css";
 import { figures } from "../../figures";
+import ControlPanel from '../controlPanel/controlPanel'
 
 class Game extends React.Component {
   constructor() {
@@ -87,12 +88,18 @@ class Game extends React.Component {
         this.moveFigureDown();
         break;
       case 38:
+      this.isKeyDown = false;
         this.rotateFigure();
         break;
       default:
         return;
     }
   };
+
+  handleClick =(e)=>{
+    console.log(e.target.dataset.arrow);
+    if(e.target.dataset.arrow ==='up') this.rotateFigure();
+  }
 
   drawFigure = (field, figure, x, y) => {
     figure.forEach(path => {
@@ -190,7 +197,7 @@ class Game extends React.Component {
   };
 
   rotateFigure() {
-    this.isKeyDown = false;
+   
     // check if figure has space to rotate
     let canRotate = true;
     this.nextFigurePath = this.currentFigure.path[this.pathIndex + 1];
@@ -290,6 +297,7 @@ class Game extends React.Component {
         <Field field={this.state.field} />
         <Modal gameOver={this.state.gameOver} startGame={this.startGame} />
         <NextFigureField nextFigureField={this.state.nextFigureField} />
+        <ControlPanel handleClick={this.handleClick}/>
       </div>
     );
   }
