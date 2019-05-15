@@ -85,6 +85,7 @@ class Game extends React.Component {
         this.moveFigureRight();
         break;
       case 40:
+        this.isKeyDown = false;
         this.moveFigureDown();
         break;
       case 38:
@@ -99,6 +100,7 @@ class Game extends React.Component {
   handleClick = e => {
     console.log(e.target.dataset.arrow);
     if (e.target.dataset.arrow === "up") this.rotateFigure();
+    if (e.target.dataset.arrow === "down") this.moveFigureDown();
   };
 
   drawFigure = (field, figure, x, y) => {
@@ -191,7 +193,6 @@ class Game extends React.Component {
   };
 
   moveFigureDown = () => {
-    this.isKeyDown = false;
     clearInterval(this.interval);
     this.interval = setInterval(this.moveFigure, 10);
   };

@@ -1,9 +1,15 @@
 .control-panel {
-  width: 200px;
+  width: 300px;
   height: 200px;
-  background: rgb(210, 210, 231);
+  background:#E61B21;
   transition: 0.5s ease;
-  perspective: 100px;
+  font-size: 10px;
+}
+
+.control-panel__arrows {
+  border: 1px solid white;
+  width: 20em;
+  height: 20em;
 }
 
 .up {

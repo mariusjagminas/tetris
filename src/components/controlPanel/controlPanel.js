@@ -1,6 +1,7 @@
 import React from "react";
 import "./controlPanel.css";
 import ArrowUp from "./arrowUp/arrowUp";
+import ArrowDown from "./arrowDown/arrowDown";
 
 class ControlPanel extends React.PureComponent {
   constructor(props) {
@@ -22,7 +23,10 @@ class ControlPanel extends React.PureComponent {
     console.log("render ControlPanel");
     return (
       <div className="control-panel">
-        <ArrowUp handleClickButton={this.handleClickButton} />
+        <div className="control-panel__arrows">
+          <ArrowUp handleClickButton={this.handleClickButton} />
+          <ArrowDown handleClickButton={this.handleClickButton} />
+        </div>
       </div>
     );
   }

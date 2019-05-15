@@ -1,0 +1,21 @@
+.arrow {
+  width: 5em;
+  height: 5em;
+  background: #F1E610;
+  text-align: center;
+  position: relative;
+}
+
+.arrow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.arrow__content {
+  font-size: 20px;
+}

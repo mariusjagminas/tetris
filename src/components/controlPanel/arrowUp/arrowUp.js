@@ -1,5 +1,5 @@
 import React from "react";
-import "./arrow.css";
+import "../arrow.css";
 
 const ArrowUp = ({ handleClickButton }) => {
   return (
@@ -8,7 +8,9 @@ const ArrowUp = ({ handleClickButton }) => {
       data-arrow="up"
       className="arrow arrow--up"
     >
-      Up
+     <div className="arrow__content">
+     Up
+     </div>
     </div>
   );
 };
