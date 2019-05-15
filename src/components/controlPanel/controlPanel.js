@@ -4,11 +4,13 @@ import ArrowUp from './arrowUp/arrowUp';
 import ArrowDown from './arrowDown/arrowDown';
 import ArrowLeft from './arrowLeft/arrowLeft';
 import ArrowRight from './arrowRight/arrowRight';
+import PauseBtn from './pauseBtn/pauseBtn';
 
 class ControlPanel extends React.PureComponent {
 	constructor(props) {
 		super();
 		this.handleClick = props.handleClick;
+		this.pauseGame = props.pauseGame;
 	}
 
 	handleClickButton = e => {
@@ -22,7 +24,6 @@ class ControlPanel extends React.PureComponent {
 	};
 
 	render() {
-		console.log('render ControlPanel');
 		return (
 			<div className="control-panel">
 				<div className="control-panel__arrows-wrapper">
@@ -31,6 +32,7 @@ class ControlPanel extends React.PureComponent {
 					<ArrowLeft handleClickButton={this.handleClickButton} />
 					<ArrowRight handleClickButton={this.handleClickButton} />
 				</div>
+					<PauseBtn pauseGame={this.pauseGame}/>
 			</div>
 		);
 	}

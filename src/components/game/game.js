@@ -25,6 +25,7 @@ class Game extends React.Component {
 		this.currentFigure = null;
 		this.figurePath = null;
 		this.figures = figures;
+		this.paused = false;
 	}
 
 	createField = (height, width) => {
@@ -69,7 +70,7 @@ class Game extends React.Component {
 	};
 
 	handleKeyDown = e => {
-		if (!this.isKeyDown || this.state.gameOver) return;
+		if (!this.isKeyDown || this.state.gameOver || this.paused) return;
 		switch (e.keyCode) {
 			case 37:
 				this.isKeyDown = false;
@@ -93,7 +94,7 @@ class Game extends React.Component {
 	};
 
 	handleClick = e => {
-		if (this.state.gameOver) return;
+		if (this.state.gameOver || this.paused) return;
 		switch (e.target.dataset.arrow) {
 			case 'left':
 				this.moveFigureLeft();
@@ -286,13 +287,23 @@ class Game extends React.Component {
 		this.loop();
 	};
 
+	pauseGame = () => {
+		if (this.paused) {
+			this.interval = setInterval(this.moveFigure, this.speed);
+			this.paused = false;
+		} else {
+			clearInterval(this.interval);
+			this.paused = true;
+		}
+	};
+
 	render() {
 		return (
 			<div className="game">
 				<Field field={this.state.field} />
 				<Modal gameOver={this.state.gameOver} startGame={this.startGame} />
 				<NextFigureField nextFigureField={this.state.nextFigureField} />
-				<ControlPanel handleClick={this.handleClick} />
+				<ControlPanel handleClick={this.handleClick} pauseGame={this.pauseGame} />
 			</div>
 		);
 	}
