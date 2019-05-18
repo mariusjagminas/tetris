@@ -1,9 +1,9 @@
 .arrow {
-  width: 5em;
-  height: 6em;
-  /* background: #f1e610; */
-  text-align: center;
-  position: relative;
+  width: 4.4em;
+  height: 5.7em;
+  background: rgb(53, 52, 52);
+  position: absolute;
+  border-radius: 5px;
 }
 
 .arrow::before {
@@ -16,20 +16,34 @@
   z-index: 1;
 }
 
+
 .arrow__content {
   width: 2em;
   height: 2em;
-  margin: 0 auto;
+  position: absolute;
+  left: 0.7em;
+  bottom: 2.4em;
   border: 1.5em solid transparent;
   border-bottom: 2.2em solid black;
 }
 
+.arrow--up {
+  top: 0em;
+  left: 4em;
+}
+
 .arrow--down {
+  top: 8em;
+  left: 4em;
   transform: rotateZ(180deg);
 }
 .arrow--left {
+  top: 4em;
+  left: 0em;
   transform: rotateZ(-90deg);
 }
 .arrow--right {
+  top: 4em;
+  left: 8em;
   transform: rotateZ(90deg);
 }
