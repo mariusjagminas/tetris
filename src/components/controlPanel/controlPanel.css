@@ -1,0 +1,57 @@
+.control-panel {
+   /* background:#E61B21;  */
+  display: flex;
+  justify-content: space-between;
+  transition: 0.2s ease-in-out;
+  font-size: 9px;
+  padding: 1em 2em;
+  width: 37em;
+  perspective: 800px;
+  perspective-origin: 6em 6em;
+  margin-top: 20px;
+}
+
+/* Arrows */
+
+.control-panel__arrows-wrapper {
+  width: 13em;
+  height: 13em;
+  position: relative;
+}
+
+.control-panel__arrows-wrapper::before {
+  content: '';
+  position: absolute;
+  z-index: 4;
+  width: 3.3em;
+  height: 3.3em;
+  top: 5.2em;
+  left: 4.6em;
+  background: black;
+  border-radius: 4em;
+}
+
+/* Arrows animation */
+
+.up {
+  transform: rotateX(20deg);
+}
+.down {
+  transform: rotateX(-20deg);
+}
+.left {
+  transform: rotateY(-20deg);
+}
+.right {
+  transform: rotateY(20deg);
+}
+
+/* Buttons */
+
+.control-panel__buttons-wrapper{
+  height: 10em;
+  width: 10em;
+  margin-right: 1em;
+  position: relative;
+}
+

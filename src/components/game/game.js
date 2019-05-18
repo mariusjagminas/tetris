@@ -4,6 +4,7 @@ import Modal from "../modal/modal";
 import NextFigureField from "../nextFigureField/nextFigureField";
 import "./game.css";
 import { figures } from "../../figures";
+import ControlPanel from "../controlPanel/controlPanel";
 
 class Game extends React.Component {
   constructor() {
@@ -11,7 +12,8 @@ class Game extends React.Component {
     this.state = {
       field: [[]],
       nextFigureField: [[]],
-      gameOver: false
+			isGameOver: false,
+			isPaused: false	
     };
 
     this.speed = 800;
@@ -53,7 +55,7 @@ class Game extends React.Component {
 
   loop = () => {
     if (this.field[0].includes(2)) {
-      this.gameOver();
+      this.isGameOver();
       return;
     }
     this.pathIndex = 0;
@@ -75,18 +77,42 @@ class Game extends React.Component {
   };
 
   handleKeyDown = e => {
-    if (!this.isKeyDown || this.state.gameOver) return;
+    if (!this.isKeyDown || this.state.isGameOver ||this.state.isPaused) return;
     switch (e.keyCode) {
       case 37:
+        this.isKeyDown = false;
         this.moveFigureLeft();
         break;
       case 39:
+        this.isKeyDown = false;
         this.moveFigureRight();
         break;
       case 40:
+        this.isKeyDown = false;
         this.moveFigureDown();
         break;
       case 38:
+        this.isKeyDown = false;
+        this.rotateFigure();
+        break;
+      default:
+        return;
+    }
+  };
+
+  handleClick = e => {
+    if (this.state.isGameOver ||this.state.isPaused) return;
+    switch (e.target.dataset.arrow) {
+      case "left":
+        this.moveFigureLeft();
+        break;
+      case "right":
+        this.moveFigureRight();
+        break;
+      case "down":
+        this.moveFigureDown();
+        break;
+      case "up":
         this.rotateFigure();
         break;
       default:
@@ -129,7 +155,6 @@ class Game extends React.Component {
   };
 
   moveFigureLeft = () => {
-    this.isKeyDown = false;
     // check if figure can move to left
     let canMove = true;
     for (let x = 0; x <= this.field[1].length - 1; x++) {
@@ -157,7 +182,6 @@ class Game extends React.Component {
   };
 
   moveFigureRight = () => {
-    this.isKeyDown = false;
     let canMove = true;
     for (let x = this.field[1].length - 1; x >= 0; x--) {
       for (let y = 0; y <= this.field.length - 1; y++) {
@@ -184,13 +208,11 @@ class Game extends React.Component {
   };
 
   moveFigureDown = () => {
-    this.isKeyDown = false;
     clearInterval(this.interval);
     this.interval = setInterval(this.moveFigure, 10);
   };
 
   rotateFigure() {
-    this.isKeyDown = false;
     // check if figure has space to rotate
     let canRotate = true;
     this.nextFigurePath = this.currentFigure.path[this.pathIndex + 1];
@@ -273,24 +295,45 @@ class Game extends React.Component {
     return false;
   };
 
-  gameOver = () => {
-    this.setState({ gameOver: true });
+  isGameOver = () => {
+    this.setState({ isGameOver: true });
     clearInterval(this.interval);
   };
 
   startGame = () => {
-    this.setState({ gameOver: false });
+    if (!this.state.isGameOver) return;
+    this.setState({ isGameOver: false });
     this.field = this.field.map(row => row.map(cell => (cell = 0)));
     this.loop();
   };
 
+  pauseGame = () => {
+    if (this.state.isGameOver) return;
+    if (this.state.isPaused) {
+			this.interval = setInterval(this.moveFigure, this.speed);
+			this.setState({isPaused: false});
+    } else {
+      clearInterval(this.interval);
+			this.setState({isPaused: true});
+    }
+  };
+
   render() {
     return (
-      <div className="game">
-        <Field field={this.state.field} />
-        <Modal gameOver={this.state.gameOver} startGame={this.startGame} />
-        <NextFigureField nextFigureField={this.state.nextFigureField} />
-      </div>
+      <>
+        <div className="game">
+          <Field field={this.state.field} />
+          <Modal isGameOver={this.state.isGameOver} startGame={this.startGame} />
+          <NextFigureField nextFigureField={this.state.nextFigureField} />
+        </div>
+        <ControlPanel
+          handleClick={this.handleClick}
+          pauseGame={this.pauseGame}
+          startGame={this.startGame}
+					isPaused={this.state.isPaused}
+					isGameOver={this.state.isGameOver}
+        />
+      </>
     );
   }
 }

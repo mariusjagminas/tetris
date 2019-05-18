@@ -1,0 +1,50 @@
+.arrow {
+  width: 4.4em;
+  height: 5.7em;
+  background: rgb(53, 52, 52);
+  position: absolute;
+  border-radius: 5px;
+}
+
+.arrow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.arrow__content {
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  left: 0.7em;
+  bottom: 2.4em;
+  border: 1.5em solid transparent;
+  border-bottom: 2.2em solid black;
+}
+
+.arrow--up {
+  top: 0em;
+  left: 4em;
+}
+
+.arrow--down {
+  top: 8em;
+  left: 4em;
+  transform: rotateZ(180deg);
+}
+
+.arrow--left {
+  top: 4em;
+  left: 0em;
+  transform: rotateZ(-90deg);
+}
+
+.arrow--right {
+  top: 4em;
+  left: 8em;
+  transform: rotateZ(90deg);
+}
