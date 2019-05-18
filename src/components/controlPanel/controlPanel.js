@@ -37,8 +37,11 @@ class ControlPanel extends React.PureComponent {
           <ArrowRight handleClickButton={this.handleClickButton} />
         </div>
         <div className="control-panel__buttons-wrapper">
-          <PauseBtn pauseGame={this.pauseGame} />
-          <StartBtn startGame={this.startGame} />
+          <PauseBtn pauseGame={this.pauseGame} isPaused={this.props.isPaused} />
+          <StartBtn
+            startGame={this.startGame}
+            isGameOver={this.props.isGameOver}
+          />
         </div>
       </div>
     );

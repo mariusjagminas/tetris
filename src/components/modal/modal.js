@@ -1,9 +1,9 @@
 import React from 'react';
 import './modal.css';
 
-const Modal = ({ gameOver }) => {
+const Modal = ({ isGameOver }) => {
 	return (
-		<div className={`modal ${gameOver ? 'is-visible' : ''}`}>
+		<div className={`modal ${isGameOver ? 'is-visible' : ''}`}>
 			<p className="modal__text">Game Over</p>
 		</div>
 	);

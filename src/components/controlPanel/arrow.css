@@ -16,7 +16,6 @@
   z-index: 1;
 }
 
-
 .arrow__content {
   width: 2em;
   height: 2em;
@@ -37,11 +36,13 @@
   left: 4em;
   transform: rotateZ(180deg);
 }
+
 .arrow--left {
   top: 4em;
   left: 0em;
   transform: rotateZ(-90deg);
 }
+
 .arrow--right {
   top: 4em;
   left: 8em;

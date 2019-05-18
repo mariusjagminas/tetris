@@ -7,6 +7,7 @@
   border-radius: 5em;
   position: absolute;
   outline: none;
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
 .btn::before {
@@ -28,9 +29,23 @@
 .btn--pause {
   top: 0;
   left: 6em;
+  transition: box-shadow 0.1s ease;
 }
 
 .btn--pause::before {
   content: "Pause";
   left: 0.3em;
+}
+
+.isPaused {
+  box-shadow: none;
+}
+
+.isPaused::before {
+  content: "Resume";
+  left: -0.1em;
+}
+
+.start {
+  background: red;
 }

@@ -1,11 +1,13 @@
-import React from 'react';
-import '../btn.css'
+import React from "react";
+import "../btn.css";
 
-const PauseButton = ({ pauseGame }) => {
-	return (
-		<button className="btn btn--pause" onClick={pauseGame}>
-		</button>
-	);
+const PauseButton = ({ pauseGame, isPaused }) => {
+  return (
+    <button
+      className={`btn btn--pause ${isPaused ? "isPaused" : ""}`}
+      onClick={pauseGame}
+    />
+  );
 };
 
 export default PauseButton;
