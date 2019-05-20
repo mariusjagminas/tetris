@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5650d38c917e0f2685f75d4ea7f2e03d",
+    "revision": "4a71730743f9ded6cca267184c5f54cd",
     "url": "/tetris/index.html"
   },
   {
-    "revision": "d163bae9ca535e0c0a2a",
-    "url": "/tetris/static/css/main.c17c4e6a.chunk.css"
+    "revision": "c7679de6f43ec4ed9f55",
+    "url": "/tetris/static/css/main.8fd711be.chunk.css"
   },
   {
     "revision": "33f14f40ecd1b24477ad",
     "url": "/tetris/static/js/2.71e5ccca.chunk.js"
   },
   {
-    "revision": "d163bae9ca535e0c0a2a",
+    "revision": "c7679de6f43ec4ed9f55",
     "url": "/tetris/static/js/main.2053a361.chunk.js"
   },
   {
