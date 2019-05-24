@@ -1,0 +1,25 @@
+.score-board {
+  font-family: 'Digital';
+  font-size: 2em;
+  width: 6.1em;
+  height: 3.3em;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+ 
+}
+
+.score-board__score {
+  position: relative
+}
+
+.score-board__score::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: '000000000';
+  
+  color: rgba(220, 220, 220, 0.2);
+}

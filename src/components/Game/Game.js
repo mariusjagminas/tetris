@@ -1,10 +1,11 @@
 import React from "react";
 import Field from "../Field/Field";
-import Modal from "../modal/modal";
 import NextFigureField from "../NextFigureField/NextFigureField";
 import "./Game.css";
 import { figures } from "../../data/figures";
 import ControlPanel from "../ControlPanel/ControlPanel";
+import ScoreBoard from "../ScoreBoard/ScoreBoard";
+import GameOver from "../GameOver/GameOver";
 
 class Game extends React.Component {
   constructor() {
@@ -12,8 +13,10 @@ class Game extends React.Component {
     this.state = {
       field: [[]],
       nextFigureField: [[]],
-			isGameOver: false,
-			isPaused: false	
+      isGameOver: false,
+      isPaused: false,
+      score: 0,
+      hiScore: 0
     };
 
     this.speed = 800;
@@ -26,6 +29,8 @@ class Game extends React.Component {
     this.currentFigure = null;
     this.figurePath = null;
     this.figures = figures;
+    this.score = 0;
+    this.savedHiScore = null;
   }
 
   createField = (height, width) => {
@@ -49,13 +54,14 @@ class Game extends React.Component {
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyDown);
     document.addEventListener("keyup", () => (this.isKeyDown = true));
+    this.getHiScore();
     this.nextFigure = this.getRandomFigure();
     this.loop();
   }
 
   loop = () => {
     if (this.field[0].includes(2)) {
-      this.isGameOver();
+      this.gameOver();
       return;
     }
     this.pathIndex = 0;
@@ -77,7 +83,7 @@ class Game extends React.Component {
   };
 
   handleKeyDown = e => {
-    if (!this.isKeyDown || this.state.isGameOver ||this.state.isPaused) return;
+    if (!this.isKeyDown || this.state.isGameOver || this.state.isPaused) return;
     switch (e.keyCode) {
       case 37:
         this.isKeyDown = false;
@@ -101,7 +107,7 @@ class Game extends React.Component {
   };
 
   handleClick = e => {
-    if (this.state.isGameOver ||this.state.isPaused) return;
+    if (this.state.isGameOver || this.state.isPaused) return;
     switch (e.target.dataset.arrow) {
       case "left":
         this.moveFigureLeft();
@@ -276,7 +282,26 @@ class Game extends React.Component {
         this.field[i][x] = this.field[i - 1][x];
       }
     }
+    this.addScore();
     this.clearFullRow();
+  };
+
+  addScore = () => {
+    this.score = this.score + 10;
+    this.setState({ score: this.score });
+  };
+
+  getHiScore = () => {
+    this.savedHiScore = parseInt(
+      window.localStorage.getItem("hi-score-tetris")
+    );
+    this.setState({ hiScore: this.savedHiScore ? this.savedHiScore : 0 });
+  };
+
+  setHiScore = () => {
+    if (this.score < this.savedHiScore) return;
+    window.localStorage.setItem("hi-score-tetris", this.score);
+    this.getHiScore();
   };
 
   getFullRowIndex = () => {
@@ -295,14 +320,16 @@ class Game extends React.Component {
     return false;
   };
 
-  isGameOver = () => {
+  gameOver = () => {
     this.setState({ isGameOver: true });
     clearInterval(this.interval);
+    this.setHiScore();
   };
 
   startGame = () => {
     if (!this.state.isGameOver) return;
-    this.setState({ isGameOver: false });
+    this.score = 0;
+    this.setState({ isGameOver: false, score: 0 });
     this.field = this.field.map(row => row.map(cell => (cell = 0)));
     this.loop();
   };
@@ -310,11 +337,11 @@ class Game extends React.Component {
   pauseGame = () => {
     if (this.state.isGameOver) return;
     if (this.state.isPaused) {
-			this.interval = setInterval(this.moveFigure, this.speed);
-			this.setState({isPaused: false});
+      this.interval = setInterval(this.moveFigure, this.speed);
+      this.setState({ isPaused: false });
     } else {
       clearInterval(this.interval);
-			this.setState({isPaused: true});
+      this.setState({ isPaused: true });
     }
   };
 
@@ -322,17 +349,23 @@ class Game extends React.Component {
     return (
       <>
         <div className="game">
-          <Field field={this.state.field} />
-          <Modal isGameOver={this.state.isGameOver} startGame={this.startGame} />
-          <NextFigureField nextFigureField={this.state.nextFigureField} />
+          <div className="game__display">
+            <Field field={this.state.field} />
+            <div className="game__side-panel">
+              <ScoreBoard title={"HI-SCORE"} score={this.state.hiScore} />
+              <ScoreBoard title={"SCORE"} score={this.state.score} />
+              <NextFigureField nextFigureField={this.state.nextFigureField} />
+              <GameOver isGameOver={this.state.isGameOver} />
+            </div>
+          </div>
+          <ControlPanel
+            handleClick={this.handleClick}
+            pauseGame={this.pauseGame}
+            startGame={this.startGame}
+            isPaused={this.state.isPaused}
+            isGameOver={this.state.isGameOver}
+          />
         </div>
-        <ControlPanel
-          handleClick={this.handleClick}
-          pauseGame={this.pauseGame}
-          startGame={this.startGame}
-					isPaused={this.state.isPaused}
-					isGameOver={this.state.isGameOver}
-        />
       </>
     );
   }

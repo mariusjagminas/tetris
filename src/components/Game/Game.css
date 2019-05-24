@@ -1,3 +1,15 @@
-.game{
+.game {
   display: flex;
+  flex-wrap: wrap;
+  width: 36em;
+}
+
+.game__display {
+  display: flex;
+  border: 5px solid rgb(128, 124, 124);
+  border-radius: 10px;
+}
+
+.game__side-panel {
+  border-left: 2px solid rgb(128, 124, 124);
 }

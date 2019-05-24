@@ -1,0 +1,12 @@
+.game-over {
+  color: rgba(220, 220, 220, 0.2);
+}
+.game-over__text {
+  font-family: "Digital";
+  font-size: 5em;
+  text-align: center;
+  padding-top: 0.25em;
+}
+.visible {
+  color: black;
+}
