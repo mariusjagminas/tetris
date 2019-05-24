@@ -1,6 +1,6 @@
 import React from "react";
-import Cell from "../cell/cell";
-import "./row.css";
+import Cell from "../Cell/Cell";
+import "./Row.css";
 
 const Row = ({ row }) => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import './cell.css'
+import './Cell.css'
 
 const Cell =({cell}) =>{
   return(

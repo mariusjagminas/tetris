@@ -1,10 +1,10 @@
 import React from "react";
-import Field from "../field/field";
+import Field from "../Field/Field";
 import Modal from "../modal/modal";
-import NextFigureField from "../nextFigureField/nextFigureField";
-import "./game.css";
-import { figures } from "../../figures";
-import ControlPanel from "../controlPanel/controlPanel";
+import NextFigureField from "../NextFigureField/NextFigureField";
+import "./Game.css";
+import { figures } from "../../data/figures";
+import ControlPanel from "../ControlPanel/ControlPanel";
 
 class Game extends React.Component {
   constructor() {

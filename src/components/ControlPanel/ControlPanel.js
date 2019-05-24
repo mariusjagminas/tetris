@@ -1,5 +1,5 @@
 import React from "react";
-import "./controlPanel.css";
+import "./ControlPanel.css";
 import ArrowUp from "./arrowUp/arrowUp";
 import ArrowDown from "./arrowDown/arrowDown";
 import ArrowLeft from "./arrowLeft/arrowLeft";

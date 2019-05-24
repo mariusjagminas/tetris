@@ -1,6 +1,6 @@
 import React from "react";
-import Row from "../row/row";
-import "./field.css";
+import Row from "../Row/Row";
+import "./Field.css";
 
 const Field = ({ field }) => {
   return (

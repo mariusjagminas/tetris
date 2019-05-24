@@ -1,5 +1,5 @@
 import React from "react";
-import Row from "../row/row";
+import Row from "../Row/Row";
 
 
 const NextFigureField = ({  nextFigureField }) => {
