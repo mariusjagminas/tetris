@@ -3,7 +3,7 @@
   border: none;
   height: 4em;
   width: 4em;
-  background: rgb(53, 52, 52);
+  background:var( --primary-color-light);
   border-radius: 5em;
   position: absolute;
   outline: none;

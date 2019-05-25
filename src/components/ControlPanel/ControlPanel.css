@@ -27,7 +27,7 @@
   height: 3.3em;
   top: 5.2em;
   left: 4.6em;
-  background: black;
+  background: var(--primary-color-dark);
   border-radius: 4em;
 }
 
