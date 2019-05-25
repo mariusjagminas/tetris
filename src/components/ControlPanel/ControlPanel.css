@@ -3,9 +3,9 @@
   display: flex;
   justify-content: space-between;
   transition: 0.2s ease-in-out;
-  font-size: 9px;
+  font-size: inherit;
   padding: 1em 2em;
-  width: 37em;
+  width: 38em;
   perspective: 800px;
   perspective-origin: 6em 6em;
   margin-top: 20px;
@@ -27,7 +27,7 @@
   height: 3.3em;
   top: 5.2em;
   left: 4.6em;
-  background: var(--primary-color-dark);
+  background: var(--secondary-color-light);
   border-radius: 4em;
 }
 

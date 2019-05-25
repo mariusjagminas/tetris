@@ -5,7 +5,7 @@
 }
 
 html {
-  font-size: 8px;
+  font-size: 7.6px;
 }
 
 @font-face {
@@ -20,14 +20,31 @@ html {
 
 body {
   font-family: monospace;
+  margin: 0;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   /* Variables */
-  --primary-color-dark: rgba(0, 0, 0, 1); /*Score-boards, arrows*/
+  --primary-color-dark: rgba(0, 0, 0, 1); /*Score-boards*/
   --primary-color: rgba(0, 0, 0, 0.8); /*Figures*/
-  --primary-color-light: rgb(53, 52, 52); /*Buttons, Controler background*/
+  --primary-color-light: #f1e610; /*Buttons, Controler background*/
   --primary-color-light-1: rgb(128, 124, 124); /*Display border lines*/
   --primary-color-light-2: rgba(220, 220, 220, 0.2); /*Background contrast*/
+  --secondary-color-dark: #c41e1a;
+  --secondary-color: #e61b21; /*Skin */
+  --secondary-color-light: #e28a21; /*Arrows*/
+  background-color: var( --secondary-color)
+}
+
+@media (min-width: 374px){
+  html {
+    font-size: 8.8px;
+  }
+}
+
+@media (min-width: 700px){
+  body {
+    background-color: #5BBEB9;
+  }
 }

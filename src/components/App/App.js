@@ -1,11 +1,12 @@
 import React from "react";
 import Game from "../Game/Game";
+import './App.css'
 
 const App = () => {
   return (
-    <>
-      <Game />
-    </>
+      <div className="skin">
+        <Game />
+      </div>
   );
 };
 

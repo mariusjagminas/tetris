@@ -1,0 +1,12 @@
+.skin {
+  background: var(--secondary-color);
+  border-radius: 1em;
+  border-bottom-right-radius: 11em;
+}
+
+@media (min-width: 700px) {
+  .skin {
+    padding: 3em 3em 6em 3em;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  }
+}

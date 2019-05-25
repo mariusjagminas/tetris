@@ -23,7 +23,7 @@
   left: 0.7em;
   bottom: 2.4em;
   border: 1.5em solid transparent;
-  border-bottom: 2.2em solid var(--primary-color-dark);
+  border-bottom: 2.2em solid var(--secondary-color-light);
 }
 
 .arrow--up {

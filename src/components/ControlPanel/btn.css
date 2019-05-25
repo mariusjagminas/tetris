@@ -1,9 +1,9 @@
 .btn {
   font-size: inherit;
   border: none;
-  height: 4em;
-  width: 4em;
-  background:var( --primary-color-light);
+  height: 5.2em;
+  width: 5.2em;
+  background: var(--primary-color-light);
   border-radius: 5em;
   position: absolute;
   outline: none;
@@ -14,27 +14,28 @@
   content: "";
   position: absolute;
   font-size: 1.2em;
-  bottom: -1.6em;
+  bottom: -1.8em;
 }
 
 .btn--start {
-  top: 4em;
+  top: 7em;
+  left: -1em;
 }
 
 .btn--start::before {
   content: "Start";
-  left: 0.6em;
+  left: 1em;
 }
 
 .btn--pause {
-  top: 0;
-  left: 6em;
+  top: 1em;
+  left: 5em;
   transition: box-shadow 0.1s ease;
 }
 
 .btn--pause::before {
   content: "Pause";
-  left: 0.3em;
+  left: 0.7em;
 }
 
 .isPaused {
