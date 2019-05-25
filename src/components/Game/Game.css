@@ -13,7 +13,7 @@
 .game__frame--inner {
   border: 2px solid var(--primary-color-light-1);
   background: white;
-  margin: 0.2em;
+  margin: 0.3em;
 }
 
 .game__frame--middle {

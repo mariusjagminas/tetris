@@ -34,17 +34,23 @@ body {
   --secondary-color-dark: #c41e1a;
   --secondary-color: #e61b21; /*Skin */
   --secondary-color-light: #e28a21; /*Arrows*/
-  background-color: var( --secondary-color)
+  background-color: var(--secondary-color);
 }
 
-@media (min-width: 374px){
+@media (min-width: 374px) {
   html {
     font-size: 8.8px;
   }
 }
 
-@media (min-width: 700px){
+@media (min-width: 700px) {
   body {
-    background-color: #5BBEB9;
+    background-color: #5bbeb9;
+  }
+}
+
+@media (min-width: 1060px) {
+  html {
+    font-size: 7.4px;
   }
 }
