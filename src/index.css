@@ -31,8 +31,8 @@ body {
   --primary-color-light: #f1e610; /*Buttons, Controler background*/
   --primary-color-light-1: rgb(128, 124, 124); /*Display border lines*/
   --primary-color-light-2: rgba(220, 220, 220, 0.2); /*Background contrast*/
-  --secondary-color-dark: #c41e1a;
-  --secondary-color: #e61b21; /*Skin */
+  --secondary-color-dark: #941411;
+  --secondary-color: #b9141a; /*Skin */
   --secondary-color-light: #e28a21; /*Arrows*/
   background-color: var(--secondary-color);
 }

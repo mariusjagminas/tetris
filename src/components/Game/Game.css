@@ -19,7 +19,7 @@
 .game__frame--middle {
   border: 1.2em solid var(--secondary-color-dark);
   background-color: inherit;
-  background: white;;
+  background: white;
 }
 
 .game__frame--outer {

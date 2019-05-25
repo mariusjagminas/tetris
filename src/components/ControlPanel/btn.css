@@ -7,6 +7,7 @@
   border-radius: 5em;
   position: absolute;
   outline: none;
+  color: #eee7e7;
   box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
@@ -44,7 +45,7 @@
 
 .isPaused::before {
   content: "Resume";
-  left: -0.1em;
+  left: 0.4em;
 }
 
 .start {
