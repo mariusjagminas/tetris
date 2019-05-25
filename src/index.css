@@ -5,23 +5,52 @@
 }
 
 html {
-  font-size: 8px;
+  font-size: 7.6px;
 }
 
 @font-face {
-  font-family: 'Digital';
-  src: url('./fonts/digital-7-webfont.woff2') format('woff2'),
-       url('./fonts/digital-7-webfont.woff') format('woff'),
-       url('./fonts/digital-7-webfont.ttf') format('truetype'),
-       url('./fonts/digital-7-webfont.svg#digital-7regular') format('svg');
+  font-family: "Digital";
+  src: url("./fonts/digital-7-webfont.woff2") format("woff2"),
+    url("./fonts/digital-7-webfont.woff") format("woff"),
+    url("./fonts/digital-7-webfont.ttf") format("truetype"),
+    url("./fonts/digital-7-webfont.svg#digital-7regular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 body {
   font-family: monospace;
+  margin: 0;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* Variables */
+  --primary-color-dark: rgba(0, 0, 0, 1); /*Score-boards*/
+  --primary-color: rgba(0, 0, 0, 0.8); /*Figures*/
+  --primary-color-light: #f1e610; /*Buttons, Controler background*/
+  --primary-color-light-1: rgb(128, 124, 124); /*Display border lines*/
+  --primary-color-light-2: rgba(220, 220, 220, 0.2); /*Background contrast*/
+  --secondary-color-dark: #941411;
+  --secondary-color: #b9141a; /*Skin */
+  --secondary-color-light: #e28a21; /*Arrows*/
+  background-color: var(--secondary-color);
+}
+
+@media (min-width: 374px) {
+  html {
+    font-size: 8.8px;
+  }
+}
+
+@media (min-width: 700px) {
+  body {
+    background-color: #5bbeb9;
+  }
+}
+
+@media (min-width: 1060px) {
+  html {
+    font-size: 7.4px;
+  }
 }

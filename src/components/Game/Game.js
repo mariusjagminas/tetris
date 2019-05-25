@@ -349,13 +349,19 @@ class Game extends React.Component {
     return (
       <>
         <div className="game">
-          <div className="game__display">
-            <Field field={this.state.field} />
-            <div className="game__side-panel">
-              <ScoreBoard title={"HI-SCORE"} score={this.state.hiScore} />
-              <ScoreBoard title={"SCORE"} score={this.state.score} />
-              <NextFigureField nextFigureField={this.state.nextFigureField} />
-              <GameOver isGameOver={this.state.isGameOver} />
+          <div className="game__frame--outer">
+            <div className="game__frame--middle">
+              <div className="game__frame--inner">
+                <Field field={this.state.field} />
+                <div className="game__side-panel">
+                  <ScoreBoard title={"HI-SCORE"} score={this.state.hiScore} />
+                  <ScoreBoard title={"SCORE"} score={this.state.score} />
+                  <NextFigureField
+                    nextFigureField={this.state.nextFigureField}
+                  />
+                  <GameOver isGameOver={this.state.isGameOver} />
+                </div>
+              </div>
             </div>
           </div>
           <ControlPanel

@@ -1,11 +1,10 @@
 .control-panel {
-   /* background:#E61B21;  */
   display: flex;
   justify-content: space-between;
   transition: 0.2s ease-in-out;
-  font-size: 9px;
+  font-size: inherit;
   padding: 1em 2em;
-  width: 37em;
+  width: 38em;
   perspective: 800px;
   perspective-origin: 6em 6em;
   margin-top: 20px;
@@ -20,14 +19,14 @@
 }
 
 .control-panel__arrows-wrapper::before {
-  content: '';
+  content: "";
   position: absolute;
   z-index: 4;
   width: 3.3em;
   height: 3.3em;
   top: 5.2em;
   left: 4.6em;
-  background: black;
+  background: var(--secondary-color-light);
   border-radius: 4em;
 }
 
@@ -48,10 +47,9 @@
 
 /* Buttons */
 
-.control-panel__buttons-wrapper{
+.control-panel__buttons-wrapper {
   height: 10em;
   width: 10em;
   margin-right: 1em;
   position: relative;
 }
-

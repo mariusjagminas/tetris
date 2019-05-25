@@ -1,5 +1,5 @@
 .game-over {
-  color: rgba(220, 220, 220, 0.2);
+  color: var(--primary-color-light-2);
 }
 .game-over__text {
   font-family: "Digital";
@@ -8,5 +8,5 @@
   padding-top: 0.25em;
 }
 .visible {
-  color: black;
+  color:var(--primary-color-dark);
 }
