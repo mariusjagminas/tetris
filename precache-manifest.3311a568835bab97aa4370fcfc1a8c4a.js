@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7f53d19e1fcaec1f11d726987a8e85fa",
+    "revision": "b6935e6c709dd160854fe15bb2cfa6f7",
     "url": "/tetris/index.html"
   },
   {
-    "revision": "0ee88dca72f9750a10bf",
-    "url": "/tetris/static/css/main.0ec42203.chunk.css"
+    "revision": "4abc7e70ae1e6f7af114",
+    "url": "/tetris/static/css/main.0acc5835.chunk.css"
   },
   {
-    "revision": "721340f4030bb2e623cb",
-    "url": "/tetris/static/js/2.cb365033.chunk.js"
+    "revision": "5050602e309b2822b9ff",
+    "url": "/tetris/static/js/2.0e36e38b.chunk.js"
   },
   {
-    "revision": "0ee88dca72f9750a10bf",
-    "url": "/tetris/static/js/main.f506da4b.chunk.js"
+    "revision": "4abc7e70ae1e6f7af114",
+    "url": "/tetris/static/js/main.55877003.chunk.js"
   },
   {
     "revision": "e9e58439d3b8c64431c2",
@@ -38,10 +38,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "f8c707b96b3f07b10cb10c69778b190e",
     "url": "/tetris/static/media/digital-7-webfont.f8c707b9.svg"
-  },
-  {
-    "revision": "200de8e8cd514c9fa856d9735d473979",
-    "url": "/tetris/static/media/figureMove.200de8e8.mp3"
   },
   {
     "revision": "2443eae417c85d59ddd1f95e4f544151",
