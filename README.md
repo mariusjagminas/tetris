@@ -1,3 +1,3 @@
 # Tetris
 
- A classic Tetris game written in React.
+ A classic Tetris game built with React.
