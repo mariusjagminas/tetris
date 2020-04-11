@@ -7,14 +7,14 @@
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0"
   },
-  "homepage": "https://mariusjagminas.github.io/tetris/",
+  "homepage": "https://tetris.mjagminas.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "react-scripts build",
-    "deploy":"gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
