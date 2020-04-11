@@ -1,23 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "21df829853097bbba8a7b497a5293b76",
+    "revision": "2b1ba7a7639697b22b463ae33fcc3d80",
     "url": "/index.html"
   },
   {
-    "revision": "058901945336f4998972",
+    "revision": "9e97be8e908a58fc6f9b",
     "url": "/static/css/main.d67fef73.chunk.css"
   },
   {
-    "revision": "33f14f40ecd1b24477ad",
-    "url": "/static/js/2.71e5ccca.chunk.js"
+    "revision": "2f173d764310bb384f70",
+    "url": "/static/js/3.9db5b4bb.chunk.js"
   },
   {
-    "revision": "058901945336f4998972",
-    "url": "/static/js/main.ce73c96d.chunk.js"
+    "revision": "9e97be8e908a58fc6f9b",
+    "url": "/static/js/main.8bffa1d8.chunk.js"
   },
   {
-    "revision": "42ac5946195a7306e2a5",
-    "url": "/static/js/runtime~main.a8a9905a.js"
+    "revision": "8a49b6c9f64577a9a192",
+    "url": "/static/js/runtime~main.146c20a2.js"
+  },
+  {
+    "revision": "1bbeca30e840c49a37ac",
+    "url": "/static/js/screen-orientation-js.67cd07c4.chunk.js"
   },
   {
     "revision": "2f31eb9346ac5e87db9344a034785a26",
