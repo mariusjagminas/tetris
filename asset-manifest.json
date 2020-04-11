@@ -1,18 +1,16 @@
 {
   "files": {
-    "main.css": "/tetris/static/css/main.0acc5835.chunk.css",
-    "main.js": "/tetris/static/js/main.55877003.chunk.js",
-    "main.js.map": "/tetris/static/js/main.55877003.chunk.js.map",
+    "main.css": "/tetris/static/css/main.ee47af60.chunk.css",
+    "main.js": "/tetris/static/js/main.ce73c96d.chunk.js",
+    "main.js.map": "/tetris/static/js/main.ce73c96d.chunk.js.map",
     "runtime~main.js": "/tetris/static/js/runtime~main.61707ba2.js",
     "runtime~main.js.map": "/tetris/static/js/runtime~main.61707ba2.js.map",
-    "static/js/2.0e36e38b.chunk.js": "/tetris/static/js/2.0e36e38b.chunk.js",
-    "static/js/2.0e36e38b.chunk.js.map": "/tetris/static/js/2.0e36e38b.chunk.js.map",
+    "static/js/2.71e5ccca.chunk.js": "/tetris/static/js/2.71e5ccca.chunk.js",
+    "static/js/2.71e5ccca.chunk.js.map": "/tetris/static/js/2.71e5ccca.chunk.js.map",
     "index.html": "/tetris/index.html",
-    "precache-manifest.3311a568835bab97aa4370fcfc1a8c4a.js": "/tetris/precache-manifest.3311a568835bab97aa4370fcfc1a8c4a.js",
+    "precache-manifest.e3769c0376a7a740bb764c1b73eb7893.js": "/tetris/precache-manifest.e3769c0376a7a740bb764c1b73eb7893.js",
     "service-worker.js": "/tetris/service-worker.js",
-    "static/css/main.0acc5835.chunk.css.map": "/tetris/static/css/main.0acc5835.chunk.css.map",
-    "static/media/addScore.mp3": "/tetris/static/media/addScore.bb6c99a6.mp3",
-    "static/media/index.css": "/tetris/static/media/digital-7-webfont.f8c707b9.svg",
-    "static/media/gameOver.mp3": "/tetris/static/media/gameOver.2443eae4.mp3"
+    "static/css/main.ee47af60.chunk.css.map": "/tetris/static/css/main.ee47af60.chunk.css.map",
+    "static/media/index.css": "/tetris/static/media/digital-7-webfont.f8c707b9.svg"
   }
 }
