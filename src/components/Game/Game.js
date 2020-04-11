@@ -23,7 +23,7 @@ class Game extends React.Component {
     this.field = this.createField(20, 10);
     this.nextFigureField = this.createField(5, 5);
     this.pathIndex = 0;
-    this.isKeyDown = true;
+    this.isKeyUp = true;
     this.figureCoord = { x: 0, y: 0 };
     this.lastRandomNumber = null;
     this.currentFigure = null;
@@ -53,7 +53,7 @@ class Game extends React.Component {
 
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyDown);
-    document.addEventListener("keyup", () => (this.isKeyDown = true));
+    document.addEventListener("keyup", () => (this.isKeyUp = true));
     this.getHiScore();
     this.nextFigure = this.getRandomFigure();
     this.loop();
@@ -83,26 +83,42 @@ class Game extends React.Component {
   };
 
   handleKeyDown = e => {
-    if (!this.isKeyDown || this.state.isGameOver || this.state.isPaused) return;
+    if (!this.isKeyUp) return;
+
+    if (!this.state.isPaused && !this.state.isGameOver) {
+      switch (e.keyCode) {
+        case 37:
+          this.isKeyUp = false;
+          this.moveFigureLeft();
+          break;
+        case 39:
+          this.isKeyUp = false;
+          this.moveFigureRight();
+          break;
+        case 40:
+          this.isKeyUp = false;
+          this.moveFigureDown();
+          break;
+        case 38:
+          this.isKeyUp = false;
+          this.rotateFigure();
+          break;
+        default:
+          break;
+      }
+    }
+
     switch (e.keyCode) {
-      case 37:
-        this.isKeyDown = false;
-        this.moveFigureLeft();
+      case 80:
+        this.isKeyUp = false;
+        this.pauseGame();
         break;
-      case 39:
-        this.isKeyDown = false;
-        this.moveFigureRight();
-        break;
-      case 40:
-        this.isKeyDown = false;
-        this.moveFigureDown();
-        break;
-      case 38:
-        this.isKeyDown = false;
-        this.rotateFigure();
+      case 83:
+        this.isKeyUp = false;
+        this.startGame();
         break;
       default:
-        return;
+        return
     }
   };
 
