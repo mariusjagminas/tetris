@@ -83,26 +83,42 @@ class Game extends React.Component {
   };
 
   handleKeyDown = e => {
-    if (!this.isKeyDown || this.state.isGameOver || this.state.isPaused) return;
+    if (!this.isKeyDown) return;
+
+    if (!this.state.isPaused && !this.state.isGameOver) {
+      switch (e.keyCode) {
+        case 37:
+          this.isKeyDown = false;
+          this.moveFigureLeft();
+          break;
+        case 39:
+          this.isKeyDown = false;
+          this.moveFigureRight();
+          break;
+        case 40:
+          this.isKeyDown = false;
+          this.moveFigureDown();
+          break;
+        case 38:
+          this.isKeyDown = false;
+          this.rotateFigure();
+          break;
+        default:
+          break;
+      }
+    }
+
     switch (e.keyCode) {
-      case 37:
+      case 80:
         this.isKeyDown = false;
-        this.moveFigureLeft();
+        this.pauseGame();
         break;
-      case 39:
+      case 83:
         this.isKeyDown = false;
-        this.moveFigureRight();
-        break;
-      case 40:
-        this.isKeyDown = false;
-        this.moveFigureDown();
-        break;
-      case 38:
-        this.isKeyDown = false;
-        this.rotateFigure();
+        this.startGame();
         break;
       default:
-        return;
+        return
     }
   };
 
